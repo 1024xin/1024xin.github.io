@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="redis,">
+  <meta name="keywords" content="liux,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="1、主机 172.16.12.252 172.16.12.2532、两台主机home 目录下创建文件夹 /home/redis-cluster/7001/log /home/redis-cluster/7001/data /home/redis-cluster/7002/log /home/redis-cluster/7002/data /home/redis-cluster/7003/log /">
-<meta name="keywords" content="redis">
+<meta name="description" content="查看防火墙状态123[root@localhost ～]# systemctl status firewalld.service    #查看防火墙状态（运行中）[root@localhost ～]# systemctl stop firewalld.service    #关闭防火墙[root@localhost ～]# systemctl disable firewalld.service">
+<meta name="keywords" content="liux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis集群搭建">
-<meta property="og:url" content="http://yoursite.com/2019/11/14/redis集群搭建/index.html">
+<meta property="og:title" content="linux防火墙策略">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/linux防火墙策略/index.html">
 <meta property="og:site_name" content="xin&#39;s blog">
-<meta property="og:description" content="1、主机 172.16.12.252 172.16.12.2532、两台主机home 目录下创建文件夹 /home/redis-cluster/7001/log /home/redis-cluster/7001/data /home/redis-cluster/7002/log /home/redis-cluster/7002/data /home/redis-cluster/7003/log /">
+<meta property="og:description" content="查看防火墙状态123[root@localhost ～]# systemctl status firewalld.service    #查看防火墙状态（运行中）[root@localhost ～]# systemctl stop firewalld.service    #关闭防火墙[root@localhost ～]# systemctl disable firewalld.service">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/11/14/redis集群搭建/1.jpg">
-<meta property="og:updated_time" content="2019-11-14T14:28:05.813Z">
+<meta property="og:updated_time" content="2019-11-27T02:28:59.223Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis集群搭建">
-<meta name="twitter:description" content="1、主机 172.16.12.252 172.16.12.2532、两台主机home 目录下创建文件夹 /home/redis-cluster/7001/log /home/redis-cluster/7001/data /home/redis-cluster/7002/log /home/redis-cluster/7002/data /home/redis-cluster/7003/log /">
-<meta name="twitter:image" content="http://yoursite.com/2019/11/14/redis集群搭建/1.jpg">
+<meta name="twitter:title" content="linux防火墙策略">
+<meta name="twitter:description" content="查看防火墙状态123[root@localhost ～]# systemctl status firewalld.service    #查看防火墙状态（运行中）[root@localhost ～]# systemctl stop firewalld.service    #关闭防火墙[root@localhost ～]# systemctl disable firewalld.service">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/14/redis集群搭建/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/27/linux防火墙策略/">
 
 
 
 
 
-  <title>redis集群搭建 | xin's blog</title>
+  <title>linux防火墙策略 | xin's blog</title>
   
 
 
@@ -295,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/redis集群搭建/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/linux防火墙策略/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xin">
@@ -312,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">redis集群搭建</h1>
+          <h1 class="post-title" itemprop="name headline">linux防火墙策略</h1>
         
 
         <div class="post-meta">
@@ -324,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T15:02:41+08:00">
-                2019-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-27T10:22:22+08:00">
+                2019-11-27
               </time>
             
 
@@ -362,63 +360,11 @@
       
 
       
-        <h3 id="1、主机"><a href="#1、主机" class="headerlink" title="1、主机"></a>1、主机</h3><ul>
-<li>172.16.12.252</li>
-<li>172.16.12.253<h3 id="2、两台主机home-目录下创建文件夹"><a href="#2、两台主机home-目录下创建文件夹" class="headerlink" title="2、两台主机home 目录下创建文件夹"></a>2、两台主机home 目录下创建文件夹</h3></li>
-<li>/home/redis-cluster/7001/log</li>
-<li>/home/redis-cluster/7001/data</li>
-<li>/home/redis-cluster/7002/log</li>
-<li>/home/redis-cluster/7002/data</li>
-<li>/home/redis-cluster/7003/log</li>
-<li>/home/redis-cluster/7003/data<h3 id="3、配置文件，将配置文件放入对应的端口"><a href="#3、配置文件，将配置文件放入对应的端口" class="headerlink" title="3、配置文件，将配置文件放入对应的端口"></a>3、配置文件，将配置文件放入对应的端口</h3></li>
-<li>172.16.12.252 配置文件<br><a href="redis-7001-252-master.conf">redis-7001-master.conf</a><br><a href="redis-7002-252-slave.conf">redis-7002-slave.conf</a><br><a href="redis-7003-252-slave.conf">redis-7003-slave.conf</a></li>
-<li><p>172.16.12.253 配置文件<br><a href="redis-7001-253-master.conf]">redis-7001-master.conf</a><br><a href="redis-7002-253-master.conf">redis-7002-master.conf</a><br><a href="redis-7003-253-slave.conf">redis-7003-slave.conf</a></p>
-</li>
-<li><p>master节点需要改动的配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bind 172.16.12.252</span><br><span class="line">protected-mode yes</span><br><span class="line">port 7001</span><br><span class="line">pidfile /var/run/redis_7001.pid</span><br><span class="line">logfile /home/redis-cluster/7001/log/7001.log</span><br><span class="line">dir /home/redis-cluster/7001/data/</span><br><span class="line">appendonly yes</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file /home/redis-cluster/7001/nodes-7001.conf</span><br><span class="line">requirepass 12678</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>slave 节点需要改动的配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bind 172.16.12.253</span><br><span class="line">protected-mode yes</span><br><span class="line">port 7003</span><br><span class="line">pidfile /var/run/redis_7003.pid</span><br><span class="line">logfile /home/redis-cluster/7003/log/7003.log</span><br><span class="line">dir /home/redis-cluster/7003/data/</span><br><span class="line">appendonly yes</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file /home/redis-cluster/7003/nodes-7003.conf</span><br><span class="line">requirepass 12678</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="4、下载redis-并安装"><a href="#4、下载redis-并安装" class="headerlink" title="4、下载redis 并安装"></a>4、下载redis 并安装</h3><ul>
-<li>下载redis <a href="redis-4.0.11.tar.gz">redis-4.0.11.tar.gz</a></li>
-<li>将redis 解压在 /usr/local/redis 目录下面  tar -zxvf redis-4.0.11.tar.gz</li>
-<li>安装redis 在redis-4.0.11 目录下执行  make</li>
-<li>创建软连接，<ul>
-<li>ln -s /usr/local/redis/redis-4.0.11/src/redis-server /usr/local/bin/redis-server</li>
-<li>ln -s /usr/local/redis/redis-4.0.11/src/redis-cli /usr/local/bin/redis-cli<h3 id="5、创建redis集群"><a href="#5、创建redis集群" class="headerlink" title="5、创建redis集群"></a>5、创建redis集群</h3></li>
-</ul>
-</li>
-<li>启动每个redis 节点<ul>
-<li>redis-server  /home/redis-cluster/7001/redis-7001.conf</li>
-<li>redis-server  /home/redis-cluster/7002/redis-7002.conf</li>
-<li>redis-server  /home/redis-cluster/7003/redis-7003.conf</li>
-</ul>
-</li>
-<li>通过ps 查看节点启动情况<br><img src="/2019/11/14/redis集群搭建/1.jpg" alt="IMAGE"></li>
-<li><p>创建集群</p>
-<ul>
-<li>打开端口<br>1、查看防火墙策略<br>firewall-cmd –list-all<br>2、端口加入防火墙策略<br>sudo firewall-cmd –zone=public –add-port=17001/tcp –permanent<br>sudo firewall-cmd –zone=public –add-port=17002/tcp –permanent<br>sudo firewall-cmd –zone=public –add-port=17003/tcp –permanent<br>sudo firewall-cmd –zone=public –add-port=7001/tcp –permanent<br>sudo firewall-cmd –zone=public –add-port=7002/tcp –permanent<br>sudo firewall-cmd –zone=public –add-port=7003/tcp –permanent<br>3、重新加载防火墙<br>sudo firewall-cmd –reload</li>
-<li><p>安装ruby gem redis</p>
-<ul>
-<li>安装 yum install –y ruby</li>
-<li>安装 yum install -y rubygems</li>
-<li>gem install redis</li>
-<li>此处报错，说需要ruby 的版本大于2.3.0，但是centos 只支持到2.0.0 此处需要将ruby提升至2.3.0</li>
-<li>执行以下命令即可升级<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -</span><br><span class="line">$ curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -</span><br><span class="line">$ curl -L get.rvm.io | bash -s stable</span><br><span class="line">$ find / -name rvm.sh</span><br><span class="line">$ source /etc/profile.d/rvm.sh</span><br><span class="line">$ rvm requirements</span><br><span class="line">$ rvmsudo yum install -y gcc-c++ patch readline readline-devel zlib   zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel</span><br><span class="line">$ source /usr/local/rvm/scripts/rvm</span><br><span class="line">$ rvm list known # 查看rvm库中已知的ruby版本</span><br><span class="line">$ rvm install 2.3.3 # 安装一个ruby版本</span><br><span class="line">$ rvm use 2.3.3 # 使用一个ruby版本</span><br><span class="line">$ rvm remove 2.0.0 # 卸载已知版本</span><br><span class="line">$ gem install redis  # 安装reids</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>此处也可以手动安装gem redis，不用执行以上ruby命令<br>gem install –local redis-4.1.3.gem 下载连接<a href="redis-4.1.3.gem">redis-4.1.3.gem</a></p>
-</li>
-<li><p>在 /usr/local/redis/redis-4.0.11/src 目录下执行<br>./redis-trib.rb create –replicas 1 172.16.12.253:7001 172.16.12.253:7002 172.16.12.253:7003 172.16.12.252:7001 172.16.12.252:7002 172.16.12.252:7003</p>
-</li>
-<li>重启/重建Redis集群时，必须删除去/etc/redis/nodes.conf文件。<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><a href="https://blog.csdn.net/weixin_42255229/article/details/80425565" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42255229/article/details/80425565</a></li>
-</ul>
-</li>
-</ul>
-
+        <h3 id="查看防火墙状态"><a href="#查看防火墙状态" class="headerlink" title="查看防火墙状态"></a>查看防火墙状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ～]<span class="comment"># systemctl status firewalld.service    #查看防火墙状态（运行中）</span></span><br><span class="line">[root@localhost ～]<span class="comment"># systemctl stop firewalld.service    #关闭防火墙</span></span><br><span class="line">[root@localhost ～]<span class="comment"># systemctl disable firewalld.service   #禁止使用防火墙（重启也是禁止的） 如果是内网无所谓，如果是阿里云或者其他云建议不要这样做，开启防火墙策略即可</span></span><br></pre></td></tr></table></figure>
+<h3 id="检查防火墙策略"><a href="#检查防火墙策略" class="headerlink" title="检查防火墙策略"></a>检查防火墙策略</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ～]<span class="comment"># firewall-cmd --list-all</span></span><br></pre></td></tr></table></figure>
+<h3 id="将需要永久开放的端口加入防火墙"><a href="#将需要永久开放的端口加入防火墙" class="headerlink" title="将需要永久开放的端口加入防火墙"></a>将需要永久开放的端口加入防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ～]<span class="comment"># sudo firewall-cmd --zone=public --add-port=7001/tcp --permanent</span></span><br></pre></td></tr></table></figure>
+<h3 id="重新加载防火墙"><a href="#重新加载防火墙" class="headerlink" title="重新加载防火墙"></a>重新加载防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ～]<span class="comment"># sudo firewall-cmd --reload # 重新加载完成后，再通过 firewall-cmd --list-all 命令查看防火墙的规则，端口已经加入进去</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ～]<span class="comment"># systemctl restart firewalld</span></span><br><span class="line"><span class="comment">#检查防火墙状态</span></span><br><span class="line">[root@localhost ～]<span class="comment"># firewall-cmd --state</span></span><br><span class="line">[root@localhost ～]<span class="comment"># firewall-cmd --list-all</span></span><br><span class="line"><span class="comment">#Disable firewall</span></span><br><span class="line">[root@localhost ～]<span class="comment"># systemctl disable firewalld</span></span><br><span class="line">[root@localhost ～]<span class="comment"># systemctl stop firewalld</span></span><br><span class="line">[root@localhost ～]<span class="comment"># systemctl status firewalld</span></span><br><span class="line"><span class="comment">#Enable firewall</span></span><br><span class="line">[root@localhost ～]<span class="comment"># systemctl enable firewalld</span></span><br><span class="line">[root@localhost ～]<span class="comment"># systemctl start firewalld</span></span><br><span class="line">[root@localhost ～]<span class="comment"># systemctl status firewalld</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -435,7 +381,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/redis/" rel="tag"># redis</a>
+            <a href="/tags/liux/" rel="tag"># liux</a>
           
         </div>
       
@@ -448,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/14/测试图片加载/" rel="next" title="测试图片加载">
-                <i class="fa fa-chevron-left"></i> 测试图片加载
+              <a href="/2019/11/27/cento7安装oracle11g/" rel="next" title="cento7静默安装oracle11g">
+                <i class="fa fa-chevron-left"></i> cento7静默安装oracle11g
               </a>
             
           </div>
@@ -457,10 +403,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/14/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +525,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、主机"><span class="nav-number">1.</span> <span class="nav-text">1、主机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、两台主机home-目录下创建文件夹"><span class="nav-number">2.</span> <span class="nav-text">2、两台主机home 目录下创建文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、配置文件，将配置文件放入对应的端口"><span class="nav-number">3.</span> <span class="nav-text">3、配置文件，将配置文件放入对应的端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、下载redis-并安装"><span class="nav-number">4.</span> <span class="nav-text">4、下载redis 并安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、创建redis集群"><span class="nav-number">5.</span> <span class="nav-text">5、创建redis集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文档"><span class="nav-number">6.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看防火墙状态"><span class="nav-number">1.</span> <span class="nav-text">查看防火墙状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查防火墙策略"><span class="nav-number">2.</span> <span class="nav-text">检查防火墙策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将需要永久开放的端口加入防火墙"><span class="nav-number">3.</span> <span class="nav-text">将需要永久开放的端口加入防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新加载防火墙"><span class="nav-number">4.</span> <span class="nav-text">重新加载防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他常用命令"><span class="nav-number">5.</span> <span class="nav-text">其他常用命令</span></a></li></ol></div>
             
 
           </div>
