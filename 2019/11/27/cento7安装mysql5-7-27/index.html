@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mysql,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、卸载mariadb12345rpm -qa | grep mariadbrpm -e --nodeps  mariadb-5.5.52-1.el7.x86_64rpm -e --nodeps  mariadb-libs-5.5.52-1.el7.x86_64rpm -e --nodeps  mariadb-server-5.5.52-1.el7.x86_64sudo yum install -">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cento7安装mysql5.7.27">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/cento7安装mysql5-7-27/index.html">
+<meta property="og:site_name" content="xin&#39;s blog">
+<meta property="og:description" content="1、卸载mariadb12345rpm -qa | grep mariadbrpm -e --nodeps  mariadb-5.5.52-1.el7.x86_64rpm -e --nodeps  mariadb-libs-5.5.52-1.el7.x86_64rpm -e --nodeps  mariadb-server-5.5.52-1.el7.x86_64sudo yum install -">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-27T06:32:38.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cento7安装mysql5.7.27">
+<meta name="twitter:description" content="1、卸载mariadb12345rpm -qa | grep mariadbrpm -e --nodeps  mariadb-5.5.52-1.el7.x86_64rpm -e --nodeps  mariadb-libs-5.5.52-1.el7.x86_64rpm -e --nodeps  mariadb-server-5.5.52-1.el7.x86_64sudo yum install -">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/27/cento7安装mysql5-7-27/">
+
+
+
+
+
+  <title>cento7安装mysql5.7.27 | xin's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">xin's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-日历">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日历
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-网站地图">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            网站地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-公益404">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/cento7安装mysql5-7-27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xin's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">cento7安装mysql5.7.27</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-27T14:24:03+08:00">
+                2019-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1、卸载mariadb<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mariadb</span><br><span class="line">rpm -e --nodeps  mariadb-5.5.52-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps  mariadb-libs-5.5.52-1.el7.x86_64</span><br><span class="line">rpm -e --nodeps  mariadb-server-5.5.52-1.el7.x86_64</span><br><span class="line">sudo yum install -y cmake make gcc gcc-c++ bison  ncurses ncurses-devel libaio-devel</span><br></pre></td></tr></table></figure></p>
+<p>2、创建用户<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql -s /bin/<span class="literal">false</span> mysql</span><br></pre></td></tr></table></figure></p>
+<p>3、在home下面创建mysql 文件夹 设置群组<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql:mysql mysql</span><br></pre></td></tr></table></figure></p>
+<p>4、创建文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir   /usr/<span class="built_in">local</span>/mysql</span><br></pre></td></tr></table></figure></p>
+<p>5、移动 <font color="red" face="Chalkduster">mysql-boost-5.7.27.tar.gz</font> 到本目录下，且解压<br>6、进入解压目录执行以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cmake \</span><br><span class="line">-DBUILD_CONFIG=mysql_release \</span><br><span class="line">-DCMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span>/mysql \</span><br><span class="line">-DMYSQL_DATADIR=/home/mysql/data \</span><br><span class="line">-DSYSCONFDIR=/etc \</span><br><span class="line">-DMYSQL_UNIX_ADDR=/home/mysql/tmp/mysql.sock \</span><br><span class="line">-DEXTRA_CHARSETS=all. \</span><br><span class="line">-DDEFAULT_CHARSET=utf8 \</span><br><span class="line">-DDEFAULT_COLLATION=utf8_general_ci \</span><br><span class="line">-DWITH_BOOST=boost</span><br></pre></td></tr></table></figure></p>
+<p>7、编译并安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+<p>8、初始化数据库<br>在 <font color="red" face="Chalkduster">/usr/local/mysql/bin/</font>  下执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./mysqld --initialize-insecure --user=mysql --basedir=/usr/<span class="built_in">local</span>/mysql --datadir=/home/mysql/data</span><br></pre></td></tr></table></figure></p>
+<p>9、修改<font color="red" face="Chalkduster">/etc/my.cnf</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">主数据库 </span><br><span class="line">[client]  </span><br><span class="line"><span class="comment">#客户端字符集   </span></span><br><span class="line">default-character-set=utf8mb4  </span><br><span class="line">[mysqld]     </span><br><span class="line">character_set_server=utf8mb4</span><br><span class="line">collation_server=utf8mb4_general_ci</span><br><span class="line"></span><br><span class="line">basedir=/usr/<span class="built_in">local</span>/mysql</span><br><span class="line">datadir=/home/mysql/data</span><br><span class="line">socket=/home/mysql/tmp/mysql.sock</span><br><span class="line">pid-file=/home/mysql/data/mysqld.pid</span><br><span class="line"></span><br><span class="line">slow-query-log-file=/home/mysql/<span class="built_in">log</span>/mysql-slow.log</span><br><span class="line"><span class="built_in">log</span>-error=/home/mysql/<span class="built_in">log</span>/mysql_error.log</span><br><span class="line"></span><br><span class="line">slow-query-log=on</span><br><span class="line">lower_case_table_names=1</span><br><span class="line">sql_mode=TRADITIONAL,ALLOW_INVALID_DATES,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line">symbolic-links=0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下为主从复制需要的配置，如果不需要主从复制可以不配置</span></span><br><span class="line"><span class="comment">#server-id给数据库服务的唯一标识</span></span><br><span class="line">server-id=1</span><br><span class="line"><span class="comment">#log-bin设置此参数表示启用binlog功能，并指定路径名称</span></span><br><span class="line"><span class="built_in">log</span>-bin=/home/mysql/mysql-bin/mysql-bin</span><br><span class="line">sync_binlog=0</span><br><span class="line"><span class="comment">#设置日志的过期天数</span></span><br><span class="line">expire_logs_days=7</span><br><span class="line"><span class="comment">#binlog_cache_size此参数表示binlog使用的内存大小</span></span><br><span class="line">binlog_cache_size=1024M</span><br><span class="line">!includedir /etc/my.cnf.d</span><br><span class="line"></span><br><span class="line">从数据库</span><br><span class="line">[client]  </span><br><span class="line"><span class="comment">#客户端字符集   </span></span><br><span class="line">default-character-set=utf8mb4  </span><br><span class="line">[mysqld]     </span><br><span class="line">character_set_server=utf8mb4</span><br><span class="line">collation_server=utf8mb4_general_ci</span><br><span class="line"></span><br><span class="line">basedir=/usr/<span class="built_in">local</span>/mysql</span><br><span class="line">datadir=/home/mysql/data</span><br><span class="line">socket=/home/mysql/tmp/mysql.sock</span><br><span class="line">pid-file=/home/mysql/data/mysqld.pid</span><br><span class="line"></span><br><span class="line">slow-query-log-file=/home/mysql/<span class="built_in">log</span>/mysql-slow.log</span><br><span class="line"><span class="built_in">log</span>-error=/home/mysql/<span class="built_in">log</span>/mysql_error.log</span><br><span class="line"></span><br><span class="line">slow-query-log=on</span><br><span class="line">lower_case_table_names=1</span><br><span class="line">sql_mode=TRADITIONAL,ALLOW_INVALID_DATES,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line">symbolic-links=0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下为主从复制需要的配置，如果不需要主从复制可以不配置</span></span><br><span class="line"><span class="comment">#server-id给数据库服务的唯一标识</span></span><br><span class="line">server-id=2</span><br><span class="line"><span class="comment">#read_only设置数据库为只读，防止从库数据修改后，主从数据不一致，但是有Super权限的账号还是有写的权限，所以要某个账号只读的话，可以去掉账号的Super权限</span></span><br><span class="line">read_only=1</span><br><span class="line"><span class="comment">#指定需要同步的表</span></span><br><span class="line">replicate-wild-do-table=atrm.%</span><br><span class="line"><span class="comment">#binlog_cache_size此参数表示binlog使用的内存大小</span></span><br><span class="line">binlog_cache_size=1024M</span><br></pre></td></tr></table></figure></p>
+<p>10、创建文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /home/mysql/<span class="built_in">log</span>  </span><br><span class="line">mkdir -p /home/mysql/data</span><br><span class="line">mkdir -p /home/mysq/tmp </span><br><span class="line">mkdir -p /home/mysql/mysql-bin </span><br><span class="line">并修改权限</span><br><span class="line">chown -R mysql:mysql <span class="built_in">log</span></span><br><span class="line">chown -R mysql:mysql data</span><br><span class="line">chown -R mysql:mysql tmp</span><br><span class="line">chown -R mysql:mysql mysql-bin</span><br></pre></td></tr></table></figure></p>
+<p>11、mysql加入启动服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line">chkconfig --add mysqld     <span class="comment"># 添加到系统服务</span></span><br><span class="line">chkconfig mysqld on        <span class="comment"># 开机启动</span></span><br></pre></td></tr></table></figure></p>
+<p>12、启动mysql </p>
+<font color="red" face="Chalkduster"> The server quit without updating PID file</font> 启动失败，my.cnf配置问题，<br>字符集配置导致错误，或者看下所有指定的文件夹或者文件是否存在，权限是否为mysql chown -R mysql:mysql<br>启动报错看下 日志<br><font color="red" face="Chalkduster"><br>Check that you do not already have another mysqld process using the same InnoDB data or log files. 这个错误是线程被占用，ps -ef|grep mysql 杀掉进程重新启动就可以<br></font>
+
+<p>13、设置 <font color="red" face="Chalkduster">/etc/profile</font><br>mysql 提示 mysql 命令不存在;<br>配置<font color="red" face="Chalkduster">/etc/profile</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:/usr/<span class="built_in">local</span>/mysql/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<p>14、设置mysql root 可以远程连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">use mysql</span><br><span class="line">update user <span class="built_in">set</span> host = <span class="string">'%'</span> <span class="built_in">where</span> user = <span class="string">'root’;</span></span><br><span class="line"><span class="string">flush privileges; </span></span><br><span class="line"><span class="string">flush privileges;</span></span><br><span class="line"><span class="string">#设置mysql 密码</span></span><br><span class="line"><span class="string">set password for '</span>root<span class="string">'@'</span>%<span class="string">'=password('</span>atrm@2019’);</span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment">#开启3306 防火墙</span></span><br><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/27/linux防火墙策略/" rel="next" title="linux防火墙策略">
+                <i class="fa fa-chevron-left"></i> linux防火墙策略
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">xin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
